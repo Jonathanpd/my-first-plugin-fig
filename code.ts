@@ -13,31 +13,24 @@ async function init() {
             switch (pluginMessage.imageVariant) {
                 case "2":
                     selectedVariant = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=single, Dark mode=true") as ComponentNode;
-                    console.log(selectedVariant);
                     break;
                 case "3":
                     selectedVariant = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=carousel, Dark mode=true") as ComponentNode;
-                    console.log(selectedVariant);
                     break;            
                 default:
                     selectedVariant = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=none, Dark mode=true") as ComponentNode;
-                    console.log(selectedVariant);
                     break;
             }
         } else {
             switch (pluginMessage.imageVariant) {
                 case "2":
                     selectedVariant = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=single, Dark mode=false") as ComponentNode;
-                    console.log(selectedVariant);
                     break;
                 case "3":
                     selectedVariant = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=carousel, Dark mode=false") as ComponentNode;
-                    console.log(selectedVariant);
                     break;            
                 default:
                     selectedVariant = postComponentSet.defaultVariant as ComponentNode;
-                    console.log(selectedVariant);
-                    console.log("selectedVariant");
                     break;
             }
         }
@@ -51,7 +44,7 @@ async function init() {
             console.error("Nenhuma variante selecionada encontrada.");
         }
 
-        //figma.closePlugin();
+        figma.closePlugin();
     }
 }
 
