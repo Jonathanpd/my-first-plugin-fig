@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/figma-plugin-ds.css">
-<!-- <script src="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/iife/figma-plugin-ds.js"></script> -->
+<script src="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/iife/figma-plugin-ds.js"></script>
 
 <style>
   body {
@@ -13,7 +13,7 @@
   }
   .my-radio {
     display: flex;
-    justify-content: space-around;
+    gap: 16px;
     width: 90%;
   }
   .my-radio__item {
@@ -39,23 +39,23 @@
 </div>
 
 <div class="switch">
-  <input class="switch__toggle" type="text">
-  <label class="switch__label" for="dark-mode-on">Dark Mode</label>
+  <input class="switch__toggle_old" type="checkbox" id="dark-mode-on">
+  <label class="switch__toggle_old" for="dark-mode-on">Dark Mode</label>
 </div>
 
 <div class="my-radio radio">
   <div class="my-radio__item">
-    <input id="radioButton1" type="radio" class="radio__button_old" name="variantGroup">
+    <input id="radioButton1" type="radio" class="radio__button_old" name="variantGroup" value="1">
     <label for="radioButton1" class="radio__button_old">No Image</label>
   </div class="radio">
 
   <div class="my-radio__item">
-    <input id="radioButton2" type="radio" class="radio__button_old" name="variantGroup">
+    <input id="radioButton2" type="radio" class="radio__button_old" name="variantGroup" value="2">
     <label for="radioButton2" class="radio__button_old">Single Image</label>
   </div>
 
   <div class="my-radio__item">
-    <input id="radioButton3" type="radio" class="radio__button_old" name="variantGroup">
+    <input id="radioButton3" type="radio" class="radio__button_old" name="variantGroup" value="3">
     <label for="radioButton3" class="radio__button_old">Carousel</label>
   </div>
 </div>
@@ -65,3 +65,16 @@
     Submit
   </button>
 </div>
+
+<script>
+  document.getElementById('submit-post').onclick = () => {
+    const name = document.getElementById('name').value;
+    const username = document.getElementById('username').value;
+    const description = document.getElementById('description').value;
+    const darkModeState = document.getElementById('dark-mode-on').checked;
+    const imageVariant = document.querySelector('input[name="variantGroup"]:checked').value;
+
+    console.log('Building my first plugin!');
+    console.log(name, username, description, darkModeState, imageVariant);
+  }
+</script>
