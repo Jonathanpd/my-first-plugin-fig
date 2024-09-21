@@ -61,6 +61,7 @@
     const description = document.getElementById('description').value;
     const darkModeState = document.getElementById('dark-mode-on').checked;
     const imageVariant = document.querySelector('input[name="variantGroup"]:checked').value;
+    
     parent.postMessage({pluginMessage: {name, username, description, darkModeState, imageVariant}},'*');
   }
 </script>
