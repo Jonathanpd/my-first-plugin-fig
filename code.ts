@@ -7,27 +7,52 @@ async function init() {
 
     figma.ui.onmessage = pluginMessage => {
         const postComponentSet = figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "post") as ComponentSetNode;
-        const defaultVariant = postComponentSet.defaultVariant as ComponentNode;
-        const defaultDark = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=none, Dark mode=true") as ComponentNode;
+        let selectedVariant;
 
         if (pluginMessage.darkModeState === true) {
-            defaultDark.createInstance()
+            switch (pluginMessage.imageVariant) {
+                case "2":
+                    selectedVariant = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=single, Dark mode=true") as ComponentNode;
+                    console.log(selectedVariant);
+                    break;
+                case "3":
+                    selectedVariant = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=carousel, Dark mode=true") as ComponentNode;
+                    console.log(selectedVariant);
+                    break;            
+                default:
+                    selectedVariant = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=none, Dark mode=true") as ComponentNode;
+                    console.log(selectedVariant);
+                    break;
+            }
         } else {
-            defaultVariant.createInstance()
+            switch (pluginMessage.imageVariant) {
+                case "2":
+                    selectedVariant = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=single, Dark mode=false") as ComponentNode;
+                    console.log(selectedVariant);
+                    break;
+                case "3":
+                    selectedVariant = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=carousel, Dark mode=false") as ComponentNode;
+                    console.log(selectedVariant);
+                    break;            
+                default:
+                    selectedVariant = postComponentSet.defaultVariant as ComponentNode;
+                    console.log(selectedVariant);
+                    console.log("selectedVariant");
+                    break;
+            }
         }
 
-        /* console.log(postComponentSet);
-        console.log(postComponentSet.children);
-        console.log(postComponentSet.name);
-        const {name, username, description, darkModeState, imageVariant} = pluginMessage;
-        console.log(name, username, description, darkModeState, imageVariant); */
+        //const variants = postComponentSet.findAll(node => node.type === "COMPONENT");
+        //console.log(variants.map(v => v.name)); 
 
-        figma.closePlugin();
+        if (selectedVariant) {
+            selectedVariant.createInstance();
+        } else {
+            console.error("Nenhuma variante selecionada encontrada.");
+        }
+
+        //figma.closePlugin();
     }
 }
 
 init();
-
-//figma.root.children
-//figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "post");
-//figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "post").defaultVariant.createInstance();
