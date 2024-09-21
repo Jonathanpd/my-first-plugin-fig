@@ -1,9 +1,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/figma-plugin-ds.css">
-<script src="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/iife/figma-plugin-ds.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/iife/figma-plugin-ds.js"></script> -->
 
 <style>
+  body {
+    padding: 2rem;
+  }
+  div {
+    margin: 1rem;
+  }
   input {
     display: block;
+  }
+  .my-radio {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+  }
+  .my-radio__item {
+    display: flex;
+    gap: 2px;
+  }
+  .my-radio__item label {
+    font-size: 14px;
   }
 </style>
 
@@ -11,13 +29,13 @@
 
 <div>
   <label for="username">Username</label>
-  <input class="input__field" type="text">
+  <input class="input__field" type="text" value="Your Pertma username" id="username">
 
   <label for="name">Name</label>
-  <input class="input__field" type="text">
+  <input class="input__field" type="text" value="Your Pertma display name" id="name">
 
   <label for="description">Description</label>
-  <input class="textarea" type="textarea" rows="2">
+  <input class="textarea" type="textarea" rows="2" value="Your post goes here" id="description">
 </div>
 
 <div class="switch">
@@ -25,15 +43,21 @@
   <label class="switch__label" for="dark-mode-on">Dark Mode</label>
 </div>
 
-<div class="radio">
-  <input id="radioButton1" type="radio" class="radio_button" name="variantGroup">
-  <label for="radioButton1" class="radio_button">No Image</label>
+<div class="my-radio radio">
+  <div class="my-radio__item">
+    <input id="radioButton1" type="radio" class="radio__button_old" name="variantGroup">
+    <label for="radioButton1" class="radio__button_old">No Image</label>
+  </div class="radio">
 
-  <input id="radioButton2" type="radio" class="radio_button" name="variantGroup">
-  <label for="radioButton2" class="radio_button">Single Image</label>
+  <div class="my-radio__item">
+    <input id="radioButton2" type="radio" class="radio__button_old" name="variantGroup">
+    <label for="radioButton2" class="radio__button_old">Single Image</label>
+  </div>
 
-  <input id="radioButton3" type="radio" class="radio_button" name="variantGroup">
-  <label for="radioButton3" class="radio_button">Carousel</label>
+  <div class="my-radio__item">
+    <input id="radioButton3" type="radio" class="radio__button_old" name="variantGroup">
+    <label for="radioButton3" class="radio__button_old">Carousel</label>
+  </div>
 </div>
 
 <div>
