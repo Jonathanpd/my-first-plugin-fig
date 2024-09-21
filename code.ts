@@ -5,4 +5,12 @@ figma.ui.resize(600,500);
 figma.ui.onmessage = pluginMessage => {
     const {name, username, description, darkModeState, imageVariant} = pluginMessage;
     console.log(name, username, description, darkModeState, imageVariant);
+
+    if(pluginMessage.darkModeState === true) {
+        console.log('dark')
+    } else {
+        console.log('light')
+    }
+
+    figma.closePlugin();
 }
