@@ -1,42 +1,26 @@
-<div className="my-f-p">
-  <h2>Rectangle Creator</h2>
-  <p>Count: <input id="count" value="5" type="number" min="1"></p>
-  <button id="create">Create</button>
-  <button id="cancel">Cancel</button>
-</div>
-
-<script>
-document.getElementById('create').onclick = () => {
-  const textbox = document.getElementById('count');
-  const count = parseInt(textbox.value, 10);
-  if (isNaN(count) || count <= 0) {
-    alert('Please enter a valid number');
-    return;
-  }
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*');
-}
-
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
-}
-</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/figma-plugin-ds.css">
+<script src="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/iife/figma-plugin-ds.js"></script>
 
 <style>
-  .my-f-p {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  h2 {
-    margin-bottom: 10px;
-  }
-  p {
-    margin-bottom: 20px;
-  }
-  button {
-    margin-right: 10px;
-    padding: 5px 10px;
-    background: blueviolet;
-    color: white;
-    border: none;
+  input {
+    display: block;
   }
 </style>
+
+<h1>Petma plugin</h1>
+
+<div>
+  <label for="username">Username</label>
+  <input class="input__field" type="text">
+
+  <label for="name">Name</label>
+  <input class="input__field" type="text">
+
+  <label for="description">Description</label>
+  <input class="textarea" type="textarea" rows="2">
+</div>
+
+<div class="switch">
+  <input class="switch__toggle" type="text">
+  <label class="switch__label" for="dark-mode-on">Dark Mode</label>
+</div>
