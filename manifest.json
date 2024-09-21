@@ -12,7 +12,8 @@
   "ui": "ui.html",
   "networkAccess": {
     "allowedDomains": [
-      "https://cdn.jsdelivr.net"
+      "https://cdn.jsdelivr.net",
+      "https://rsms.me/"
     ],
     "reasoning": "Este plugin precisa acessar o CDN para carregar estilos e scripts necessários."
   }

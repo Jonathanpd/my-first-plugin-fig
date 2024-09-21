@@ -14,3 +14,5 @@ figma.ui.onmessage = pluginMessage => {
 
     figma.closePlugin();
 }
+
+//figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "post");

@@ -11,52 +11,40 @@
   input {
     display: block;
   }
-  .my-radio {
-    display: flex;
-    gap: 16px;
-    width: 90%;
-  }
-  .my-radio__item {
-    display: flex;
-    gap: 2px;
-  }
-  .my-radio__item label {
-    font-size: 14px;
-  }
 </style>
 
 <h1>Petma plugin</h1>
 
 <div>
   <label for="username">Username</label>
-  <input class="input__field" type="text" value="Your Pertma username" id="username">
+  <input class="input__field" type="text" placeholder ="Your Pertma username" id="username">
 
   <label for="name">Name</label>
-  <input class="input__field" type="text" value="Your Pertma display name" id="name">
+  <input class="input__field" type="text" placeholder ="Your Pertma display name" id="name">
 
   <label for="description">Description</label>
-  <input class="textarea" type="textarea" rows="2" value="Your post goes here" id="description">
+  <input class="textarea" type="textarea" rows="2" placeholder  ="Your post goes here" id="description">
 </div>
 
 <div class="switch">
-  <input class="switch__toggle_old" type="checkbox" id="dark-mode-on">
-  <label class="switch__toggle_old" for="dark-mode-on">Dark Mode</label>
+  <input class="switch__toggle" type="checkbox" id="dark-mode-on">
+  <label class="switch__label" for="dark-mode-on">Dark Mode</label>
 </div>
 
 <div class="my-radio radio">
   <div class="my-radio__item">
-    <input id="radioButton1" type="radio" class="radio__button_old" name="variantGroup" value="1">
-    <label for="radioButton1" class="radio__button_old">No Image</label>
+    <input id="radioButton1" type="radio" class="radio__button" name="variantGroup" value="1">
+    <label for="radioButton1" class="radio__label">No Image</label>
   </div class="radio">
 
   <div class="my-radio__item">
-    <input id="radioButton2" type="radio" class="radio__button_old" name="variantGroup" value="2">
-    <label for="radioButton2" class="radio__button_old">Single Image</label>
+    <input id="radioButton2" type="radio" class="radio__button" name="variantGroup" value="2">
+    <label for="radioButton2" class="radio__label">Single Image</label>
   </div>
 
   <div class="my-radio__item">
-    <input id="radioButton3" type="radio" class="radio__button_old" name="variantGroup" value="3">
-    <label for="radioButton3" class="radio__button_old">Carousel</label>
+    <input id="radioButton3" type="radio" class="radio__button" name="variantGroup" value="3">
+    <label for="radioButton3" class="radio__label">Carousel</label>
   </div>
 </div>
 
