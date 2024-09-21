@@ -39,7 +39,15 @@ async function init() {
         //console.log(variants.map(v => v.name)); 
 
         if (selectedVariant) {
-            selectedVariant.createInstance();
+            const newPost = selectedVariant.createInstance();
+
+            const templateName = newPost.findOne(node => node.name == "displayName" && node.type == "TEXT") as TextNode;
+            const templateUsername = newPost.findOne(node => node.name == "@username" && node.type == "TEXT") as TextNode;
+            const templateDescription = newPost.findOne(node => node.name == "description" && node.type == "TEXT") as TextNode;
+
+            console.log(templateName.characters);
+            console.log(templateUsername.characters);
+            console.log(templateDescription.characters);
         } else {
             console.error("Nenhuma variante selecionada encontrada.");
         }
