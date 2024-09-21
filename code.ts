@@ -23,8 +23,6 @@ figma.ui.onmessage = async (msg: { type: string, count?: number }) => {
     }
     figma.currentPage.selection = nodes;
     figma.viewport.scrollAndZoomIntoView(nodes);
-  } else if (msg.type === 'cancel') {
-    figma.closePlugin();
   }
   figma.closePlugin();
 };

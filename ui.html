@@ -1,10 +1,28 @@
-<h2>Rectangle Creator</h2>
-<p>Count: <input id="count" value="5" type="number" min="1"></p>
-<button id="create">Create</button>
-<button id="cancel">Cancel</button>
+<div className="my-f-p">
+  <h2>Rectangle Creator</h2>
+  <p>Count: <input id="count" value="5" type="number" min="1"></p>
+  <button id="create">Create</button>
+  <button id="cancel">Cancel</button>
+</div>
+
+<script>
+document.getElementById('create').onclick = () => {
+  const textbox = document.getElementById('count');
+  const count = parseInt(textbox.value, 10);
+  if (isNaN(count) || count <= 0) {
+    alert('Please enter a valid number');
+    return;
+  }
+  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*');
+}
+
+document.getElementById('cancel').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
+}
+</script>
 
 <style>
-  body {
+  .my-f-p {
     font-family: Arial, sans-serif;
     margin: 20px;
   }
@@ -22,19 +40,3 @@
     border: none;
   }
 </style>
-
-<script>
-document.getElementById('create').onclick = () => {
-  const textbox = document.getElementById('count');
-  const count = parseInt(textbox.value, 10);
-  if (isNaN(count) || count <= 0) {
-    alert('Please enter a valid number');
-    return;
-  }
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*');
-}
-
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
-  }
-</script>
