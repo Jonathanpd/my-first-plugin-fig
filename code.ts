@@ -5,7 +5,9 @@ figma.ui.resize(600,500);
 async function init() {
     await figma.loadAllPagesAsync(); // Carrega todas as páginas do documento
 
-    figma.ui.onmessage = pluginMessage => {
+    figma.ui.onmessage = async (pluginMessage) => {
+        await figma.loadFontAsync({ family: "Rubik", style: "Regular" });
+
         const postComponentSet = figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "post") as ComponentSetNode;
         let selectedVariant;
 
@@ -45,9 +47,9 @@ async function init() {
             const templateUsername = newPost.findOne(node => node.name == "@username" && node.type == "TEXT") as TextNode;
             const templateDescription = newPost.findOne(node => node.name == "description" && node.type == "TEXT") as TextNode;
 
-            console.log(templateName.characters);
-            console.log(templateUsername.characters);
-            console.log(templateDescription.characters);
+            templateName.characters = pluginMessage.name;
+            templateUsername.characters = pluginMessage.username;
+            templateDescription.characters = pluginMessage.description;
         } else {
             console.error("Nenhuma variante selecionada encontrada.");
         }
